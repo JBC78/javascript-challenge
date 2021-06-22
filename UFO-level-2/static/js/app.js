@@ -40,10 +40,30 @@ FilterTableButton.on("click", function() {
     var FilterSearchOnDate = d3.select("#datetime");
 
     // Get the value property of the input element
-    var inputValue = inputElement.property("value");
+    var inputValue = FilterSearchOnDate.property("value");
 
     // Print the value to the console
     console.log(inputValue);
 
+    // Filter the data on the FilterSearchOnDate value  (use || operator to create multiple filter options)
+    var filteredDataData = tableData.filter(UnidentifiedFlyingObjects => UnidentifiedFlyingObjects.datetime === inputValue);
 
+    // Print the value to the console
+    console.log(filteredDataData);
+
+    // Create Function forEach filteredDataDataUfoSighting
+    filteredDataData.forEach(function(filteredDataDataUfoSighting) {
+    console.log(filteredDataDataUfoSighting);
+
+    // Append one table row `tr` to the table body
+    var row = tbody.append("tr");
+
+    //   Use `Object.entries` to console.log each UFO Sighting value
+    Object.entries(filteredDataDataUfoSighting).forEach(function([key, value]) {
+        console.log(key, value);
+        // Append a cell to the row for each value in the Ufo Sighting object
+        var cell = row.append("td");
+        cell.text(value);
+    });
+});
 });
