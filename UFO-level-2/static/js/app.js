@@ -46,7 +46,13 @@ FilterTableButton.on("click", function() {
     console.log(inputValue);
 
     // Filter the data on the FilterSearchOnDate value  (use || operator to create multiple filter options)
-    var filteredDataData = tableData.filter(UnidentifiedFlyingObjects => UnidentifiedFlyingObjects.datetime === inputValue);
+    var filteredDataData = tableData.filter(UnidentifiedFlyingObjects => 
+        UnidentifiedFlyingObjects.city === inputValue || 
+        UnidentifiedFlyingObjects.state === inputValue ||
+        UnidentifiedFlyingObjects.country === inputValue ||
+        UnidentifiedFlyingObjects.durationMinutes === inputValue ||
+        UnidentifiedFlyingObjects.shape === inputValue,
+        );
 
     // Print the value to the console
     console.log(filteredDataData);
